@@ -35,7 +35,11 @@ const HomePage = () => {
 
 	const handlerSubmit = e => {
 		e.preventDefault()
-		navigate(`/search/${e.target.search.value} `)
+		if (e.target.search.value == '') {
+			navigate('/search/all')
+		} else {
+			navigate(`/search/${e.target.search.value}`)
+		}
 	}
 
 	useEffect(() => {

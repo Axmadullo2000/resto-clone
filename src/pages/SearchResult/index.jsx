@@ -5,9 +5,13 @@ import { compareTwoStrings } from 'string-similarity'
 
 import Header from '../../components/Header'
 import {
+	errorOccuredInFetching,
+	restaurantsListFetching,
+	restaurantsSuccessFetched,
 	searchRestaurantsStart,
 	searchRestaurantsSuccess,
 } from '../../redux/slice/RestaurantSlice'
+import { restaurantsService } from '../../service'
 
 export const SearchResult = () => {
 	const { restaurantData, searchedData } = useSelector(
@@ -19,11 +23,17 @@ export const SearchResult = () => {
 	const showResultSearch = () => {
 		try {
 			dispatch(searchRestaurantsStart())
-			restaurantData.map(
-				restaurant =>
-					compareTwoStrings(restaurant.name.toLowerCase(), slug.toLowerCase()) >
-						0.2 && dispatch(searchRestaurantsSuccess([restaurant]))
-			)
+			if (slug == 'all') {
+				dispatch(searchRestaurantsSuccess(restaurantData))
+			} else {
+				restaurantData.map(
+					restaurant =>
+						compareTwoStrings(
+							restaurant.name.toLowerCase(),
+							slug.toLowerCase()
+						) > 0.2 && dispatch(searchRestaurantsSuccess([restaurant]))
+				)
+			}
 		} catch (error) {
 			console.log(error)
 		}
@@ -31,16 +41,31 @@ export const SearchResult = () => {
 
 	useEffect(() => {
 		showResultSearch()
-		console.log(searchedData)
+		const getAllData = async () => {
+			dispatch(restaurantsListFetching())
+			try {
+				const response = await restaurantsService.fetchRestaurantList()
+				dispatch(restaurantsSuccessFetched(response.data))
+			} catch (error) {
+				dispatch(errorOccuredInFetching(error.message))
+			}
+		}
+		if (slug == 'all') {
+			getAllData()
+		}
 	}, [slug])
 
 	return (
 		<div>
 			<Header />
 			<ul>
-				{searchedData.map(restaurant => (
-					<li>{restaurant.name}</li>
-				))}
+				{slug == 'all'
+					? restaurantData.map(restaurant => (
+							<li key={restaurant.id}>{restaurant.name}</li>
+					  ))
+					: searchedData.map(restaurant => (
+							<li key={restaurant.id}>{restaurant.name}</li>
+					  ))}
 			</ul>
 		</div>
 	)
