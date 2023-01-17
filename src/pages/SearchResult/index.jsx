@@ -23,35 +23,31 @@ export const SearchResult = () => {
 	const showResultSearch = () => {
 		try {
 			dispatch(searchRestaurantsStart())
-			if (slug == 'all') {
-				dispatch(searchRestaurantsSuccess(restaurantData))
-			} else {
-				restaurantData.map(
-					restaurant =>
-						compareTwoStrings(
-							restaurant.name.toLowerCase(),
-							slug.toLowerCase()
-						) > 0.2 && dispatch(searchRestaurantsSuccess([restaurant]))
-				)
-			}
+			restaurantData.map(
+				restaurant =>
+					compareTwoStrings(restaurant.name.toLowerCase(), slug.toLowerCase()) >
+						0.2 && dispatch(searchRestaurantsSuccess([restaurant]))
+			)
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	useEffect(() => {
-		showResultSearch()
-		const getAllData = async () => {
-			dispatch(restaurantsListFetching())
-			try {
-				const response = await restaurantsService.fetchRestaurantList()
-				dispatch(restaurantsSuccessFetched(response.data))
-			} catch (error) {
-				dispatch(errorOccuredInFetching(error.message))
-			}
+	const getAllData = async () => {
+		dispatch(restaurantsListFetching())
+		try {
+			const response = await restaurantsService.fetchRestaurantList()
+			dispatch(restaurantsSuccessFetched(response.data))
+		} catch (error) {
+			dispatch(errorOccuredInFetching(error.message))
 		}
+	}
+
+	useEffect(() => {
 		if (slug == 'all') {
 			getAllData()
+		} else {
+			showResultSearch()
 		}
 	}, [slug])
 
