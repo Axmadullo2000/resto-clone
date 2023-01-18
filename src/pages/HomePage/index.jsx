@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import {
   errorOccuredInFetching,
@@ -39,6 +42,30 @@ const HomePage = () => {
     e.preventDefault();
     navigate(`/search/${e.target.search.value} `);
   };
+	const [searchItem, setSearchItem] = useState('')
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+	const { restaurantData } = useSelector(state => state.restaurant)
+
+	const getAllData = async () => {
+		dispatch(restaurantsListFetching())
+		try {
+			const response = await restaurantsService.fetchRestaurantList()
+			dispatch(restaurantsSuccessFetched(response.data))
+			console.log(response.data)
+		} catch (error) {
+			dispatch(errorOccuredInFetching(error.message))
+		}
+	}
+
+	const handlerSubmit = e => {
+		e.preventDefault()
+		if (e.target.search.value == '') {
+			navigate('/search/all')
+		} else {
+			navigate(`/search/${e.target.search.value}`)
+		}
+	}
 
   useEffect(() => {
     getAllData();
