@@ -1,9 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 
-import RestaurantReducer from "../slice/RestaurantSlice";
+import RestaurantReducer from '../slice/RestaurantSlice'
+import AuthReducer from '../slice/AuthSlice'
 
 export default configureStore({
 	reducer: {
-		restaurant: RestaurantReducer
-	}
+		restaurant: RestaurantReducer,
+		auth: AuthReducer,
+	},
 })

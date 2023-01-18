@@ -2,8 +2,7 @@ import axios from './api'
 
 export const restaurantsService = {
 	async fetchRestaurantList() {
-		const data = axios.get('/restorans/func/')
-		console.log(data)
+		const data = await axios.get('/restorans/func/')
 		return data
 	},
 }
