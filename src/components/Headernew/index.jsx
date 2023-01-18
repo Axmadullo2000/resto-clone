@@ -1,32 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-//import "./Header.scss";
-
-const Header = () => {
+import "./Headernew.scss";
+import logo from "./img/logo.png";
+const Headernew = () => {
   return (
     <header className="header">
       <div className="container header__container">
-        <p className="header__logo">Restaraunts</p>
+        <img src={logo} className="header__logo" />
         <ul className="header__navbar">
           <li className="header__item">
             <Link to="/" className="header__link">
-              Home
+              Кулинария
             </Link>
           </li>
           <li className="header__item">
             <Link to="/" className="header__link">
-              About
+              Рецепты
             </Link>
           </li>
           <li className="header__item">
             <Link to="/" className="header__link">
-              Contact
+              Тосты
             </Link>
           </li>
           <li className="header__item">
             <Link to="/" className="header__link">
-              Settings
+              Помощь по сайту
+            </Link>
+          </li>
+          <li className="header__item">
+            <Link to="/" className="header__link">
+              Реклама на сайте
             </Link>
           </li>
         </ul>
@@ -35,4 +39,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Headernew;
