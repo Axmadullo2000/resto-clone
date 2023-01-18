@@ -1,29 +1,41 @@
+@font-face {
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Thin", sans-serif;
+  font-family: "Roboto Light", sans-serif;
+  font-family: "Roboto Medium", sans-serif;
+  font-family: "Roboto Black", sans-serif;
+
+  src: url("https://fonts.cdnfonts.com/css/roboto");
+}
 .header {
-	display: flex;
-	justify-content: space-between;
-	background-color: rgb(91, 198, 240) ;
+  display: flex;
+  justify-content: space-between;
 
-	&__container {
-		display: flex;
-		justify-content: space-between;
-	}
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
 
-	&__logo {
-		padding: 10px 50px;
-	}
+  &__logo {
+    padding: 10px 50px;
+  }
 
-	&__navbar {
-		display: flex;
-		list-style: none;
-	}
+  &__navbar {
+    display: flex;
+    list-style: none;
+  }
 
-	&__item {
-		color: #10286c;
-		padding: 15px 22px;
+  &__item {
+    padding: 15px 18px;
+    font-family: "Roboto", sans-serif;
+    transition: 0.4s;
+  }
 
-	}
+  &__item:hover {
+    scale: 1.1;
+  }
 
-	&__link {
-		text-decoration: none;
-	}
+  &__link {
+    text-decoration: none;
+  }
 }

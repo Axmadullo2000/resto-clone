@@ -1,38 +1,48 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-//import "./Header.scss";
+import logo from '../../assets/logo.png'
+
+import './Header.scss'
 
 const Header = () => {
-  return (
-    <header className="header">
-      <div className="container header__container">
-        <p className="header__logo">Restaraunts</p>
-        <ul className="header__navbar">
-          <li className="header__item">
-            <Link to="/" className="header__link">
-              Home
-            </Link>
-          </li>
-          <li className="header__item">
-            <Link to="/" className="header__link">
-              About
-            </Link>
-          </li>
-          <li className="header__item">
-            <Link to="/" className="header__link">
-              Contact
-            </Link>
-          </li>
-          <li className="header__item">
-            <Link to="/" className="header__link">
-              Settings
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </header>
-  );
-};
+	const navigate = useNavigate()
+	return (
+		<header className='header'>
+			<div className='container header__container'>
+				<div onClick={() => navigate('/')} style={{cursor: 'pointer'}}>
+					<img alt='logo' src={logo} className='header__logo' />
+				</div>
+				<ul className='header__navbar'>
+					<li className='header__item'>
+						<Link to='/' className='header__link'>
+							Кулинария
+						</Link>
+					</li>
+					<li className='header__item'>
+						<Link to='/' className='header__link'>
+							Рецепты
+						</Link>
+					</li>
+					<li className='header__item'>
+						<Link to='/' className='header__link'>
+							Тосты
+						</Link>
+					</li>
+					<li className='header__item'>
+						<Link to='/' className='header__link'>
+							Помощь по сайту
+						</Link>
+					</li>
+					<li className='header__item'>
+						<Link to='/' className='header__link'>
+							Реклама на сайте
+						</Link>
+					</li>
+				</ul>
+			</div>
+		</header>
+	)
+}
 
-export default Header;
+export default Header

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import {
 	errorOccuredInFetching,
@@ -10,15 +10,14 @@ import {
 
 import { restaurantsService } from '../../service'
 import Header from '../../components/Header'
-import Headernew from '../../components/Headernew'
 import { Card } from '../../components/Card'
+import Navbar from '../../components/Navbar'
 
 import search from '../../assets/search.svg'
 import crosschair from '../../assets/crosshair.svg'
 import locate from '../../assets/location.svg'
 
 import './HomePage.scss'
-import Navbar from '../../components/Navbar'
 
 const HomePage = () => {
 	const [searchItem, setSearchItem] = useState('')
@@ -51,7 +50,7 @@ const HomePage = () => {
 
 	return (
 		<div className='container'>
-			<Headernew />
+			<Header />
 			<Navbar />
 			<div>
 				<h2 className='restaraunts_title'>

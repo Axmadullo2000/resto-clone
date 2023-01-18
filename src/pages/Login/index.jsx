@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Header from '../../components/Header'
 
 export const Login = () => {
@@ -5,6 +6,7 @@ export const Login = () => {
 		<>
 			<Header />
 			<h2>Login</h2>
+			<Link to='/auth/sign-up'>Registration</Link>
 		</>
 	)
 }
