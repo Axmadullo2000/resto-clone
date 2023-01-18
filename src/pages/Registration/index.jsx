@@ -27,10 +27,12 @@ export const Registration = () => {
 			dispatch(registerUserSuccess(response))
 			console.log(response)
 		} catch (error) {
-			dispatch(registerUserFailure([error.response.data]))
+			dispatch(registerUserFailure(error.response.data))
 			console.log(error.response.data)
 		}
 	}
+
+	console.log(error)
 
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -41,20 +43,23 @@ export const Registration = () => {
 		<>
 			<Header />
 			<h2>Registration</h2>
-			{error != null &&
-				error.map(item => (
-					<div>
-						<>{password != repeatPassword && item[0]}</>
-						<>
-							<p>{!username && `username - ${item.username}`}</p>
-							<p>{!password && `password - ${item.password}`}</p>
-							<p>{!repeatPassword && `repeat - ${item.new_password}`}</p>
-							<p>{!email && `email - ${item.email}`}</p>
-						</>
-					</div>
-				))}
 
-			{user !== null && <h2>You have successfully registered!!!</h2>}
+			{error &&
+				Object.entries(error).map((key, value) => {
+					return (
+						<>
+							{password != repeatPassword ? (
+								<p>Password must have be similarly</p>
+							) : (
+								<p key={key}>{key}</p>
+							)}
+						</>
+					)
+				})}
+
+			{user != null && error == null && (
+				<h2>You have successfully registered!!!</h2>
+			)}
 
 			<form onSubmit={handleSubmit}>
 				<input
