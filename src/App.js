@@ -7,7 +7,10 @@ import { Registration } from './pages/Registration'
 import RestaurantDetails from './pages/RestaurantDetail'
 
 import { useDispatch } from 'react-redux'
-import { registerUserStart, registerUserSuccess } from './redux/slice/AuthSlice'
+import {
+	registerUserFailure,
+	registerUserSuccess,
+} from './redux/slice/AuthSlice'
 import { authService } from './service/auth'
 import { useEffect } from 'react'
 
@@ -21,7 +24,9 @@ function App() {
 			const response = await authService.getUser()
 			dispatch(registerUserSuccess(response.user_info))
 		} catch (error) {
-			console.log(error)
+			console.log(error.response.data)
+
+			dispatch(registerUserFailure(error.response.data))
 		}
 	}
 
