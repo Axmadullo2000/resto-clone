@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { compareTwoStrings } from 'string-similarity'
 
@@ -17,17 +17,22 @@ export const SearchResult = () => {
 	const { restaurantData, searchedData } = useSelector(
 		state => state.restaurant
 	)
+	const navigate = useNavigate()
 	const { slug } = useParams()
 	const dispatch = useDispatch()
 
 	const showResultSearch = () => {
 		try {
 			dispatch(searchRestaurantsStart())
-			restaurantData.map(
-				restaurant =>
-					compareTwoStrings(restaurant.name.toLowerCase(), slug.toLowerCase()) >
-						0.2 && dispatch(searchRestaurantsSuccess([restaurant]))
-			)
+			restaurantData.map(restaurant => (
+				<>
+					{console.log(restaurant)}{' '}
+					{compareTwoStrings(
+						restaurant.slug.toLowerCase(),
+						slug != null && slug.toLowerCase()
+					) > 0.2 && dispatch(searchRestaurantsSuccess(restaurant))}
+				</>
+			))
 		} catch (error) {
 			console.log(error)
 		}
@@ -54,15 +59,7 @@ export const SearchResult = () => {
 	return (
 		<div>
 			<Header />
-			<ul>
-				{slug == 'all'
-					? restaurantData.map(restaurant => (
-							<li key={restaurant.id}>{restaurant.name}</li>
-					  ))
-					: searchedData.map(restaurant => (
-							<li key={restaurant.id}>{restaurant.name}</li>
-					  ))}
-			</ul>
+			<ul></ul>
 		</div>
 	)
 }

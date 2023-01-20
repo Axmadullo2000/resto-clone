@@ -6,9 +6,31 @@ import { Login } from './pages/Login'
 import { Registration } from './pages/Registration'
 import RestaurantDetails from './pages/RestaurantDetail'
 
+import { useDispatch } from 'react-redux'
+import { registerUserStart, registerUserSuccess } from './redux/slice/AuthSlice'
+import { authService } from './service/auth'
+import { useEffect } from 'react'
+
 import './App.css'
 
 function App() {
+	const dispatch = useDispatch()
+
+	const authenticationUser = async () => {
+		try {
+			const response = await authService.getUser()
+			dispatch(registerUserSuccess(response.user_info))
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const token = localStorage.getItem('token')
+
+	useEffect(() => {
+		authenticationUser()
+	}, [token])
+
 	return (
 		<Routes>
 			<Route path='/' element={<HomePage />} />
