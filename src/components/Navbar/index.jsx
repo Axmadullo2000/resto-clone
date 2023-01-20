@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { logoutUser } from '../../redux/slice/AuthSlice'
-import { authService } from '../../service/auth'
 
 import './Navbar.scss'
 
@@ -10,6 +9,7 @@ const Navbar = () => {
 	const navigate = useNavigate()
 	const { user, isLoggedIn } = useSelector(auth => auth.auth)
 	const dispatch = useDispatch()
+	console.log(user)
 
 	const logout = async () => {
 		try {

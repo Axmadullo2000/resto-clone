@@ -1,13 +1,10 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-	registerUserFailure,
-	registerUserStart,
-	registerUserSuccess,
-} from '../../redux/slice/AuthSlice'
+import { useNavigate } from 'react-router-dom'
+
+import { registerUserFailure, registerUser } from '../../redux/slice/AuthSlice'
 import Header from '../../components/Header'
 import { authService } from '../../service/auth'
-import { useNavigate } from 'react-router-dom'
 
 export const Registration = () => {
 	const { user, error } = useSelector(state => state.auth)
@@ -19,10 +16,12 @@ export const Registration = () => {
 	const data = { username, password, new_password: repeatPassword, email }
 	const navigate = useNavigate()
 
-	const registerUser = async () => {
+	const register = async () => {
 		try {
 			const response = await authService.registration(data)
-			dispatch(registerUserSuccess(response))
+			console.log(response)
+
+			dispatch(registerUser(response))
 			localStorage.setItem('token', response.token)
 			navigate('/')
 		} catch (error) {
@@ -33,7 +32,7 @@ export const Registration = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		registerUser()
+		register()
 	}
 
 	return (

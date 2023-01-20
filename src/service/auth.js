@@ -8,8 +8,12 @@ export const authService = {
 
 	async getUser() {
 		const { data } = await axios.get('/accounts/user/')
-		console.log(data)
 
+		return data
+	},
+
+	async login(user_data) {
+		const { data } = await axios.post('/accounts/login/', user_data)
 		return data
 	},
 }
