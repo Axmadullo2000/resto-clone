@@ -1,10 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import { logoutUser } from '../../redux/slice/AuthSlice'
 
 import './Navbar.scss'
 
 const Navbar = () => {
 	const navigate = useNavigate()
+	const { user, isLoggedIn } = useSelector(auth => auth.auth)
+	const dispatch = useDispatch()
+	console.log(user)
+
+	const logout = async () => {
+		try {
+			dispatch(logoutUser())
+			localStorage.removeItem('token')
+			navigate('/auth/login/')
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<nav className='navbar'>
@@ -45,14 +60,22 @@ const Navbar = () => {
 						</div>
 					</div>
 					<div className='dropdown'>
-						<button
-							className='dropbtn'
-							onClick={() => navigate('/auth/login/')}
-						>
-							<small>Авторизация</small>
-							<br />
-							<span>Войти / рег</span>
-						</button>
+						{!isLoggedIn ? (
+							<button
+								className='dropbtn'
+								onClick={() => navigate('/auth/login/')}
+							>
+								<small>Авторизация</small>
+								<br />
+								<span>Войти / рег</span>
+							</button>
+						) : (
+							<button className='dropbtn' onClick={logout}>
+								<span className='text-capitalize'>{user.username}</span>
+								<br />
+								<small>Выход</small>
+							</button>
+						)}
 					</div>
 					<div className='dropdown'>
 						<button className='dropbtn'>

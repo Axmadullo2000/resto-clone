@@ -2,15 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import {
-  errorOccuredInFetching,
-  restaurantsListFetching,
-  restaurantsSuccessFetched,
-} from "../../redux/slice/RestaurantSlice";
-
-import { restaurantsService } from "../../service";
 import Header from "../../components/Header";
-import { Card } from "../../components/Card";
 import Navbar from "../../components/Navbar";
 import Cardnew from "../../components/Cardnew";
 
@@ -21,33 +13,6 @@ import locate from "../../assets/location.svg";
 import "./HomePage.scss";
 
 const HomePage = () => {
-  const [searchItem, setSearchItem] = useState("");
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const getAllData = async () => {
-    dispatch(restaurantsListFetching());
-    try {
-      const response = await restaurantsService.fetchRestaurantList();
-      dispatch(restaurantsSuccessFetched(response.data));
-    } catch (error) {
-      dispatch(errorOccuredInFetching(error.message));
-    }
-  };
-
-  const handlerSubmit = (e) => {
-    e.preventDefault();
-    if (e.target.search.value == "") {
-      navigate("/search/all");
-    } else {
-      navigate(`/search/${e.target.search.value}`);
-    }
-  };
-
-  useEffect(() => {
-    getAllData();
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <div className="container">
@@ -58,7 +23,7 @@ const HomePage = () => {
           Рестораны и кафе в Москве - поиск заведений
         </h2>
         <div className="search_block">
-          <form onSubmit={handlerSubmit}>
+          <form>
             <img
               src={search}
               width={25}
@@ -67,12 +32,10 @@ const HomePage = () => {
               className="search_block__search_icon"
             />
             <input
-              value={searchItem}
               placeholder="Заведение или блюдо"
               name="search"
               id="search"
               className="search_block__search_input"
-              onChange={(e) => setSearchItem(e.target.value)}
             />
             <button className="search_block__btn">Искать</button>
           </form>
@@ -91,9 +54,6 @@ const HomePage = () => {
         </div>
       </div>
       <Cardnew />
-      <Card />
     </div>
   );
 };
-
-export default HomePage;
