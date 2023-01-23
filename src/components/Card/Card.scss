@@ -1,100 +1,104 @@
 font-face {
-	font-family: 'Roboto', sans-serif;
-	font-family: 'Roboto Thin', sans-serif;
-	font-family: 'Roboto Light', sans-serif;
-	font-family: 'Roboto Medium', sans-serif;
-	font-family: 'Roboto Black', sans-serif;
-	src: url('https://fonts.cdnfonts.com/css/roboto');
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Thin", sans-serif;
+  font-family: "Roboto Light", sans-serif;
+  font-family: "Roboto Medium", sans-serif;
+  font-family: "Roboto Black", sans-serif;
+  src: url("https://fonts.cdnfonts.com/css/roboto");
 }
 .card {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-	&__container {
-		display: flex;
-		justify-content: space-between;
-		width: 920px;
-		flex-wrap: wrap;
-	}
-	&__header {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-		height: 50px;
-		align-items: center;
-		padding-top: 30px;
-		&--name {
-			display: block;
-			color: #10286c;
-			text-decoration: none;
-			outline: none;
-			font-family: 'Montserrat', 'sans-serif';
-			font-weight: 600;
-			font-size: 20px;
-			line-height: 18px;
-			line-height: 24px;
-		}
-		&--location {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			text-decoration: none;
-			cursor: pointer;
-			background-color: transparent;
-			width: 150px;
-			height: 35px;
-			border: 2px solid #ffc000;
-			color: #000000;
-			font-family: 'Roboto', 'sans-serif';
-			font-size: 14px;
-			transition: 0.2s;
-			img {
-				width: 15px;
-				height: 15px;
-				margin-right: 5px;
-			}
-			&:hover {
-				background-color: #ffc000;
-			}
-		}
-	}
-	&__main {
-		width: 100%;
-		display: flex;
-		border-bottom: 1px solid #d0d0d0;
-		padding-top: 30px;
-		padding-bottom: 30px;
-		&--left {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 50%;
-		}
-		&--right {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 50%;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    width: 920px;
+    flex-wrap: wrap;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    padding-top: 30px;
+    &--name {
+      display: block;
+      color: #10286c;
+      text-decoration: none;
+      outline: none;
+      font-family: "Montserrat", "sans-serif";
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 18px;
+      line-height: 24px;
+    }
+    &--location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: transparent;
+      width: 150px;
+      height: 35px;
+      border: 2px solid #ffc000;
+      color: #000000;
+      font-family: "Roboto", "sans-serif";
+      font-size: 14px;
+      transition: 0.2s;
+      img {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+      }
+      &:hover {
+        background-color: #ffc000;
+      }
+    }
+  }
+  &__main {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #d0d0d0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    &--left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      img {
+        width: 320px;
+        height: 213px;
+      }
+    }
+    &--right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
       margin: 0 100px 0;
-			ul {
-				display: flex;
-				flex-flow: column nowrap;
-				justify-content: space-between;
-				height: 80%;
-				padding: 10px 0;
-				font-family: 'Roboto', 'sans-serif';
-				font-size: 14px;
-				li {
-					display: flex;
-					align-items: center;
-					font-family: 'Montserrat', 'sans-serif';
-					img {
-						width: 15px;
-						height: 15px;
-						margin-right: 10px;
-					}
-				}
-			}
-		}
-	}
+      ul {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        height: 80%;
+        padding: 10px 0;
+        font-family: "Roboto", "sans-serif";
+        font-size: 14px;
+        li {
+          display: flex;
+          align-items: center;
+          font-family: "Montserrat", "sans-serif";
+          img {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
 }

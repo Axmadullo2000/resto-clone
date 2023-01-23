@@ -1,0 +1,118 @@
+font-face {
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Thin", sans-serif;
+  font-family: "Roboto Light", sans-serif;
+  font-family: "Roboto Medium", sans-serif;
+  font-family: "Roboto Black", sans-serif;
+  src: url("https://fonts.cdnfonts.com/css/roboto");
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  background-color: #e4e4e4;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 120px;
+  }
+  &__logo {
+    width: 170px;
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  &__contact {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      transition: 0.4s;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &--social {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 20px;
+      li {
+        list-style: none;
+        a {
+          text-decoration: none;
+          margin-right: 10px;
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+    }
+  }
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 180px;
+    border-top: 1px solid #bebebe;
+    &--copyright {
+      max-width: 250px;
+      p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        line-height: 20px;
+        color: #7c7c7c;
+      }
+    }
+    &--menu ul {
+      display: flex;
+      height: 100px;
+      li {
+        list-style: none;
+        margin-left: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+    &--btn {
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      height: 100px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      button {
+        background-color: transparent;
+        border-color: #10286c;
+        color: #10286c;
+        height: 30px;
+        font-size: 11px;
+        font-weight: 600;
+        transition: 0.4s;
+        cursor: pointer;
+        &:hover {
+          background-color: #10286c;
+          color: white;
+        }
+      }
+    }
+  }
+}
