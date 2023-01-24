@@ -8,8 +8,13 @@ font-face {
 }
 .footer {
   display: flex;
+
   justify-content: space-between;
-  margin-top: 10px;
+  position: absolute;
+
+  bottom: 0;
+  width: 1050px;
+
   background-color: #e4e4e4;
   &__container {
     display: flex;
