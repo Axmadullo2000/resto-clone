@@ -1,39 +1,41 @@
+import { Link } from "react-router-dom";
 import React from "react";
 
-import "./Footer.scss";
 import logo from "../../assets/logo.png";
 import instagram from "../../assets/instagram.svg";
 import facebook from "../../assets/facebook.svg";
 import telegram from "../../assets/telegram.svg";
 import visits from "../../assets/visits.png";
 
+import "./Footer.scss";
+
 const Footer = () => {
   return (
     <div className="footer">
       <div className="footer__container">
         <div className="footer__header">
-          <div className="footer__logo">
-            <img src={logo} />
-          </div>
+          <Link to="/" className="footer__logo">
+            <img src={logo} alt='logo' />
+          </Link>
           <div className="footer__contact">
             <ul className="footer__contact--social">
               <li>
-                <a href="#">
-                  <img src={instagram} />
-                </a>
+                <Link to="/">
+                  <img src={instagram} alt='instagram' />
+                </Link>
               </li>
               <li>
-                <a href="#">
-                  <img src={facebook} />
-                </a>
+                <Link to="/">
+                  <img src={facebook} alt='facebook'/>
+                </Link>
               </li>
               <li>
-                <a href="#" className="contact">
-                  <img src={telegram} />
-                </a>
+                <Link to="/" className="contact">
+                  <img src={telegram} alt='telegram'/>
+                </Link>
               </li>
             </ul>
-            <a href="#">Контакты</a>
+            <Link to="/">Контакты</Link>
           </div>
         </div>
         <div className="footer__main">
@@ -47,10 +49,10 @@ const Footer = () => {
           <div className="footer__main--menu">
             <ul>
               <li>
-                <a href="#">Реклама на сайте</a>
+                <Link to="/">Реклама на сайте</Link>
               </li>
               <li>
-                <a href="#">Пользовательское соглашение</a>
+                <Link to="/">Пользовательское соглашение</Link>
               </li>
             </ul>
           </div>
@@ -58,9 +60,9 @@ const Footer = () => {
             <button>
               <span>Добавить новость/событие</span>
             </button>
-            <a href="#">
+            <Link to="/">
               <img src={visits} alt="Яндекс.Метрика" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -7,10 +7,11 @@ import { Login } from './pages/Login'
 import { Registration } from './pages/Registration'
 import { registerUser, registerUserFailure } from './redux/slice/AuthSlice'
 import { authService } from './service/auth'
+import { RestaurantDetail } from './pages/RestaurantDetail'
 
 import './App.css'
 
-function App() {
+const App = () => {
 	const dispatch = useDispatch()
 
 	const authenticationUser = async () => {
@@ -34,6 +35,7 @@ function App() {
 			<Route path='/' element={<HomePage />} />
 			<Route path='/auth/login/' element={<Login />} />
 			<Route path='/auth/sign-up/' element={<Registration />} />
+			<Route path='/catalog-restaurant/:slug' element={<RestaurantDetail />} />
 		</Routes>
 	)
 }

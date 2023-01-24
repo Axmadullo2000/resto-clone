@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { registerUserFailure, registerUser } from '../../redux/slice/AuthSlice'
 import Header from '../../components/Header'
 import { authService } from '../../service/auth'
+import Footer from '../../components/Footer'
 
 export const Registration = () => {
 	const { user, error } = useSelector(state => state.auth)
@@ -44,7 +45,7 @@ export const Registration = () => {
 				Object.entries(error).map((key, value) => {
 					return (
 						<div key={key}>
-							{password != repeatPassword ? (
+							{password !== repeatPassword ? (
 								<p>Password must have be similarly</p>
 							) : (
 								<p>
@@ -95,6 +96,7 @@ export const Registration = () => {
 				<br />
 				<button>Register</button>
 			</form>
+			<Footer />
 		</>
 	)
 }

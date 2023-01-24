@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import Footer from '../../components/Footer'
 
 import Header from '../../components/Header'
 import { loginUserFailure, loginUserSuccess } from '../../redux/slice/AuthSlice'
@@ -62,6 +63,7 @@ export const Login = () => {
 				<button>Login</button>
 			</form>
 			<Link to='/auth/sign-up'>Registration</Link>
+			<Footer />
 		</>
 	)
 }
