@@ -9,13 +9,11 @@ import schedule from '../../assets/schedule.png'
 import './Card.scss'
 
 const Card = () => {
-	const { restaurantData, loading } = useSelector(state => state.restaurant)
+	const { restaurantData } = useSelector(state => state.restaurant)
 
 	return (
 		<div>
-			{loading ? (
-				<h2>Loading...</h2>
-			) : !!restaurantData.length ? (
+			{!!restaurantData.length ? (
 				restaurantData.map(restaurant => (
 					<div className='card' key={restaurant.id}>
 						<div className='card__container'>
