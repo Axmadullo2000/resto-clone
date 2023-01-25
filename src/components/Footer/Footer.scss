@@ -10,10 +10,8 @@ font-face {
   display: flex;
 
   justify-content: space-between;
-  position: absolute;
 
-  bottom: 0;
-  width: 1050px;
+  width: 100%;
 
   background-color: #e4e4e4;
   &__container {
