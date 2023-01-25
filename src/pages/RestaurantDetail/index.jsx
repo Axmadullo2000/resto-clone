@@ -4,11 +4,10 @@ import { useParams } from 'react-router-dom'
 import { Carousel } from 'react-responsive-carousel'
 
 import { restaurantDetailFetched } from '../../redux/slice/RestaurantSlice'
-
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
-
 import { restaurantsService } from '../../service'
+import Comment from '../../components/Comment'
 
 export const RestaurantDetail = () => {
 	const { detailData } = useSelector(state => state.restaurant)
@@ -23,7 +22,6 @@ export const RestaurantDetail = () => {
 			console.log(error)
 		}
 	}
-	console.log()
 
 	useEffect(() => {
 		detailOfRestaurants()
@@ -76,6 +74,7 @@ export const RestaurantDetail = () => {
 					</ul>
 				</div>
 			</div>
+			<Comment />
 			<Footer />
 		</div>
 	)

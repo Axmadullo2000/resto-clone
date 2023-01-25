@@ -9,7 +9,6 @@ const Navbar = () => {
 	const navigate = useNavigate()
 	const { user, isLoggedIn } = useSelector(auth => auth.auth)
 	const dispatch = useDispatch()
-	console.log(user)
 
 	const logout = async () => {
 		try {
