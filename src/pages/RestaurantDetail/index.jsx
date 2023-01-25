@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams, redirect } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Carousel } from 'react-responsive-carousel'
 
 import { restaurantDetailFetched } from '../../redux/slice/RestaurantSlice'
@@ -27,6 +27,7 @@ export const RestaurantDetail = () => {
 
 	useEffect(() => {
 		detailOfRestaurants()
+		// eslint-disable-next-line
 	}, [slug])
 
 	return (

@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import Footer from '../../components/Footer'
 
+import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import { loginUserFailure, loginUserSuccess } from '../../redux/slice/AuthSlice'
 import { authService } from '../../service/auth'
+
+import './Login.scss'
 
 export const Login = () => {
 	const [username, setUsername] = useState('')
@@ -40,29 +42,48 @@ export const Login = () => {
 			<h2>Login</h2>
 			{!!error &&
 				Object.entries(error).map(item => {
-					return <div key={item}>
-						<h2>{item[0]} {item[1]}</h2>
-					</div>
+					return (
+						<div key={item}>
+							<h2>
+								{item[0]} {item[1]}
+							</h2>
+						</div>
+					)
 				})}
 
-			<form onSubmit={handlerSubmit}>
-				<input
-					type='text'
-					placeholder='UserName'
-					value={username}
-					onChange={e => setUsername(e.target.value)}
-				/>
+			<form className='login-form' onSubmit={handlerSubmit}>
+				<label>
+					<input
+						className='input-field'
+						type='text'
+						placeholder='Username'
+						value={username}
+						onChange={event => setUsername(event.target.value)}
+					/>
+				</label>
 				<br />
-				<input
-					type='password'
-					placeholder='Password'
-					value={password}
-					onChange={e => setPassword(e.target.value)}
-				/>
+				<label>
+					<input
+						className='input-field'
+						type='password'
+						placeholder='Пароль'
+						value={password}
+						onChange={event => setPassword(event.target.value)}
+					/>
+				</label>
 				<br />
-				<button>Login</button>
+				<div className='forget'>
+					<ul>
+						<li>
+							<Link to='/auth/sign-up'>Зарегистрироваться</Link>
+						</li>
+					</ul>
+				</div>
+				<br />
+				<button className='submit-button' type='submit'>
+					Войти
+				</button>
 			</form>
-			<Link to='/auth/sign-up'>Registration</Link>
 			<Footer />
 		</>
 	)

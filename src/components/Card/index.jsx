@@ -33,8 +33,8 @@ const Card = () => {
 							<div className='card__main'>
 								<div className='card__main--left'>
 									<img
+										alt={restaurant.name}
 										src={restaurant.photo_one}
-										alt='card photo'
 										width={450}
 									/>
 								</div>

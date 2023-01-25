@@ -7,6 +7,8 @@ import Header from '../../components/Header'
 import { authService } from '../../service/auth'
 import Footer from '../../components/Footer'
 
+import './Registration.scss'
+
 export const Registration = () => {
 	const { user, error } = useSelector(state => state.auth)
 	const [username, setUsername] = useState('')
@@ -60,41 +62,50 @@ export const Registration = () => {
 				<h2>You have successfully registered!!!</h2>
 			)}
 
-			<form onSubmit={handleSubmit}>
-				<input
-					type='text'
-					name='username'
-					placeholder='username'
-					value={username}
-					onChange={e => setUsername(e.target.value)}
-				/>
+			<form className='registration-form' onSubmit={handleSubmit}>
+				<label>
+					<input
+						className='input-field'
+						type='email'
+						placeholder='E-mail:'
+						value={email}
+						onChange={event => setEmail(event.target.value)}
+					/>
+				</label>
 				<br />
-				<input
-					type='password'
-					name='password'
-					placeholder='password'
-					value={password}
-					onChange={e => setPassword(e.target.value)}
-				/>
+				<label>
+					<input
+						className='input-field'
+						type='text'
+						placeholder='Имя'
+						value={username}
+						onChange={event => setUsername(event.target.value)}
+					/>
+				</label>
+
 				<br />
-				<input
-					type='password'
-					name='new_password'
-					placeholder='Repeat password'
-					value={repeatPassword}
-					onChange={e => setRepeatPassword(e.target.value)}
-				/>
+				<label>
+					<input
+						className='input-field'
+						type='password'
+						placeholder='Пароль'
+						value={password}
+						onChange={event => setPassword(event.target.value)}
+					/>
+				</label>
+				<label>
+					<input
+						className='input-field'
+						type='password'
+						placeholder='Пароль'
+						value={repeatPassword}
+						onChange={event => setRepeatPassword(event.target.value)}
+					/>
+				</label>
 				<br />
-				<input
-					type='email'
-					name='email'
-					id='email'
-					placeholder='email'
-					value={email}
-					onChange={e => setEmail(e.target.value)}
-				/>
-				<br />
-				<button>Register</button>
+				<button className='submit-button' type='submit'>
+					Зарегистрироваться
+				</button>
 			</form>
 			<Footer />
 		</>

@@ -33,7 +33,7 @@ export const HomePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (e.target.search.value == "") {
+    if (e.target.search.value === "") {
       showRestaurantCard();
     } else {
       const filtered = restaurantData.filter((item) => {
@@ -53,6 +53,7 @@ export const HomePage = () => {
   useEffect(() => {
     showRestaurantCard();
     dispatch(restaurantsSuccessFetched(restaurantData));
+    // eslint-disable-next-line
   }, []);
 
   return (
