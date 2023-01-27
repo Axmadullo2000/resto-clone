@@ -17,9 +17,11 @@ export const RestaurantSlice = createSlice({
 		restaurantsFailFetched: (state, action) => {
 			state.error = action.payload
 		},
+
 		restaurantDetailFetched: (state, action) => {
 			state.detailData = action.payload
 		},
+
 		restaurantTagSuccessFetched: (state, action) => {
 			state.tagsData = action.payload
 		},

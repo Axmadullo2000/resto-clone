@@ -85,8 +85,9 @@ export const Tag = () => {
 														to={`/tag/${item}`}
 														style={{ textDecoration: 'none' }}
 													>
-														{item}
-														{' ,  '}
+														<pre style={{ borderBottom: '1px solid silver', margin: '0 5px' }}>
+															{`${item}`},{' '}
+														</pre>
 													</Link>
 												)
 											})}
