@@ -1,20 +1,52 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+
+import Footer from '../../components/Footer'
+import Header from '../../components/Header'
+import Navbar from '../../components/Navbar'
 
 import locate from '../../assets/location.png'
 import kitchen from '../../assets/kitchen.png'
 import schedule from '../../assets/schedule.png'
 
-import './Card.scss'
+import '../../components/Card/Card.scss'
+import {
+	restaurantTagFailureFetched,
+	restaurantTagSuccessFetched,
+} from '../../redux/slice/RestaurantSlice'
+import { restaurantsService } from '../../service'
 
-const Card = () => {
-	const { restaurantData } = useSelector(state => state.restaurant)
+export const Tag = () => {
+	const { slug } = useParams()
+	const { tagsData } = useSelector(state => state.restaurant)
+	const dispatch = useDispatch()
+	console.log(tagsData)
+	console.log(slug)
+	const filteredData = tagsData.filter(restaurant =>
+		restaurant.tags.includes(slug)
+	)
 
+	const tagsDataFetched = async () => {
+		try {
+			const response = await restaurantsService.fetchRestaurantList()
+			dispatch(restaurantTagSuccessFetched(response))
+		} catch (error) {
+			dispatch(restaurantTagFailureFetched(error.response.data))
+		}
+	}
+
+	useEffect(() => {
+		tagsDataFetched()
+	}, [slug])
+	console.log(filteredData)
 	return (
 		<div>
-			{!!restaurantData.length ? (
-				restaurantData.map(restaurant => (
+			<Header />
+			<Navbar />
+
+			{!!filteredData.length &&
+				filteredData.map(restaurant => (
 					<div className='card' key={restaurant.id}>
 						<div className='card__container'>
 							<div className='card__header'>
@@ -68,17 +100,9 @@ const Card = () => {
 							</div>
 						</div>
 					</div>
-				))
-			) : (
-				<div className='mx-auto' style={{ background: 'red' }}>
-					<h2
-						style={{ textAlign: 'center', margin: '20px 0', padding: '20px' }}
-					>
-						Loading!!!
-					</h2>
-				</div>
-			)}
+				))}
+
+			<Footer />
 		</div>
 	)
 }
-export default Card

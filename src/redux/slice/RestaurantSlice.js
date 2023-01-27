@@ -4,6 +4,7 @@ const initialState = {
 	restaurantData: [],
 	error: null,
 	detailData: [],
+	tagsData: [],
 }
 
 export const RestaurantSlice = createSlice({
@@ -19,13 +20,23 @@ export const RestaurantSlice = createSlice({
 		restaurantDetailFetched: (state, action) => {
 			state.detailData = action.payload
 		},
+		restaurantTagSuccessFetched: (state, action) => {
+			state.tagsData = action.payload
+		},
+		restaurantTagFailureFetched: (state, action) => {
+			state.error = action.payload
+		},
 	},
 })
 
 export const {
 	restaurantsSuccessFetched,
 	restaurantsFailFetched,
+
 	restaurantDetailFetched,
+
+	restaurantTagSuccessFetched,
+	restaurantTagFailureFetched,
 } = RestaurantSlice.actions
 
 export default RestaurantSlice.reducer

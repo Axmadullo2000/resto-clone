@@ -8,6 +8,7 @@ import {
 } from '../../redux/slice/RestaurantSlice'
 import Header from '../../components/Header'
 import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 import Card from '../../components/Card'
 
 import search from '../../assets/search.svg'
@@ -15,7 +16,6 @@ import crosschair from '../../assets/crosshair.svg'
 import locate from '../../assets/location.svg'
 
 import './HomePage.scss'
-import Footer from '../../components/Footer'
 
 export const HomePage = () => {
 	const { restaurantData } = useSelector(state => state.restaurant)

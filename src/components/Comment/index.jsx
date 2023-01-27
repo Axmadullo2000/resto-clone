@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import {
 	addingComment,
@@ -14,6 +15,7 @@ const Comment = () => {
 	const { user } = useSelector(state => state.auth)
 	const { detailData } = useSelector(state => state.restaurant)
 	const { commentData, error } = useSelector(state => state.comment)
+	console.log(commentData.comment)
 
 	const dispatch = useDispatch()
 
@@ -44,7 +46,6 @@ const Comment = () => {
 
 	return (
 		<div>
-			<h1 style={{textTransform: 'capitalize'}}>{commentData.comment}</h1>
 			<form onSubmit={commentHandleSubmit}>
 				<h2>Отзывы о кафе Chocolate</h2>
 				<input
@@ -66,6 +67,13 @@ const Comment = () => {
 				<br />
 				<button>Отправить</button>
 			</form>
+			<h4 style={{ textTransform: 'capitalize' }}>
+				{!!commentData.comment ? (
+					commentData.comment
+				) : (
+					<p>You have to Log in first!!! <Link to='/auth/login/'>Login</Link></p>
+				)}
+			</h4>
 		</div>
 	)
 }

@@ -8,6 +8,7 @@ import { Registration } from './pages/Registration'
 import { registerUser, registerUserFailure } from './redux/slice/AuthSlice'
 import { authService } from './service/auth'
 import { RestaurantDetail } from './pages/RestaurantDetail'
+import { Tag } from './pages/Tag'
 
 import './App.css'
 
@@ -36,6 +37,7 @@ const App = () => {
 			<Route path='/auth/login/' element={<Login />} />
 			<Route path='/auth/sign-up/' element={<Registration />} />
 			<Route path='/catalog-restaurant/:slug' element={<RestaurantDetail />} />
+			<Route path='tag/:slug' element={<Tag />} />
 		</Routes>
 	)
 }
