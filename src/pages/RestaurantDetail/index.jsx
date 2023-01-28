@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Carousel } from 'react-responsive-carousel'
 
 import { restaurantDetailFetched } from '../../redux/slice/RestaurantSlice'
@@ -13,7 +13,6 @@ export const RestaurantDetail = () => {
 	const { detailData } = useSelector(state => state.restaurant)
 	const dispatch = useDispatch()
 	const { slug } = useParams()
-
 	const detailOfRestaurants = async () => {
 		try {
 			const response = await restaurantsService.fetchDetailRestaurant(slug)
@@ -74,6 +73,8 @@ export const RestaurantDetail = () => {
 					</ul>
 				</div>
 			</div>
+			<a href={detailData.location} style={{display: 'block', textDecoration: 'none', color: 'red', border: '2px solid silver', width: '300px', margin: 'auto', padding: '20px'}}>Показать карту</a>
+
 			<Comment />
 			<Footer />
 		</div>
