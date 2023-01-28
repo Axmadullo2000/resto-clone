@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
@@ -21,11 +21,11 @@ export const Tag = () => {
 	const { slug } = useParams()
 	const { tagsData } = useSelector(state => state.restaurant)
 	const dispatch = useDispatch()
-	console.log(tagsData)
-	console.log(slug)
 	const filteredData = tagsData.filter(restaurant =>
 		restaurant.tags.includes(slug)
 	)
+
+	const navigate = useNavigate()
 
 	const tagsDataFetched = async () => {
 		try {
@@ -57,7 +57,12 @@ export const Tag = () => {
 									{restaurant.name}
 								</Link>
 
-								<button className='card__header--location'>
+								<button
+									className='card__header--location'
+									onClick={() =>
+										navigate(`/catalog-restaurant/${restaurant.slug}`)
+									}
+								>
 									<img src={locate} alt='location' />
 									<span>{restaurant.address}</span>
 								</button>
@@ -85,7 +90,12 @@ export const Tag = () => {
 														to={`/tag/${item}`}
 														style={{ textDecoration: 'none' }}
 													>
-														<pre style={{ borderBottom: '1px solid silver', margin: '0 5px' }}>
+														<pre
+															style={{
+																borderBottom: '1px solid silver',
+																margin: '0 5px',
+															}}
+														>
 															{`${item}`},{' '}
 														</pre>
 													</Link>

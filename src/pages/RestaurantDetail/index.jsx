@@ -73,7 +73,20 @@ export const RestaurantDetail = () => {
 					</ul>
 				</div>
 			</div>
-			<a href={detailData.location} style={{display: 'block', textDecoration: 'none', color: 'red', border: '2px solid silver', width: '300px', margin: 'auto', padding: '20px'}}>Показать карту</a>
+			<a
+				href={detailData.location}
+				style={{
+					display: 'block',
+					textDecoration: 'none',
+					color: 'red',
+					border: '2px solid silver',
+					width: '300px',
+					margin: 'auto',
+					padding: '20px',
+				}}
+			>
+				Показать карту
+			</a>
 
 			<Comment />
 			<Footer />

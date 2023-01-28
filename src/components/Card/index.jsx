@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import locate from '../../assets/location.png'
@@ -10,6 +10,7 @@ import './Card.scss'
 
 const Card = () => {
 	const { restaurantData } = useSelector(state => state.restaurant)
+	const navigate = useNavigate()
 
 	return (
 		<div>
@@ -25,7 +26,12 @@ const Card = () => {
 									{restaurant.name}
 								</Link>
 
-								<button className='card__header--location'>
+								<button
+									className='card__header--location'
+									onClick={() =>
+										navigate(`/catalog-restaurant/${restaurant.slug}`)
+									}
+								>
 									<img src={locate} alt='location' />
 									<span>{restaurant.address}</span>
 								</button>
@@ -53,7 +59,14 @@ const Card = () => {
 														to={`/tag/${item}`}
 														style={{ textDecoration: 'none' }}
 													>
-														<pre style={{borderBottom: '1px solid silver', margin: '0 5px'}}>{item}</pre>
+														<pre
+															style={{
+																borderBottom: '1px solid silver',
+																margin: '0 5px',
+															}}
+														>
+															{item}
+														</pre>
 													</Link>
 												)
 											})}
